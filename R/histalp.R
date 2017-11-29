@@ -18,9 +18,9 @@ get_histalp <- function(lon, lat, na.rm = TRUE, base_dir = "~") {
                    "solid precipitation")
   nc_param_names <- c("T_2M", "TOT_PREC", "PREC_solid")
   start_dates <- as.Date(c("1780/01/01", "1801/01/01", "1801/01/01"))
-  base_names <- c("HISTALP_temperature_1780-2008.nc",
-                  "HISTALP_precipitation_all_abs_1801-2010.nc",
-                  "HISTALP_precipitation_solid_abs_1801-2008.nc")
+  base_names <- c("HISTALP_temperature_1780-2014.nc",
+                  "HISTALP_precipitation_all_abs_1801-2014.nc",
+                  "HISTALP_precipitation_solid_abs_1801-2014.nc")
   local_locations <- sapply(base_names, function(x) file.path(base_dir, x))
   ncs <- lapply(local_locations, nc_open)
   names(ncs) <- clim_params
