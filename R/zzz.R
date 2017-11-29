@@ -18,9 +18,9 @@ check_and_download <- function(base_dir = "~") {
   clim_params <- c("temperature",
                    "all precipiation",
                    "solid precipitation")
-  base_names <- c("HISTALP_temperature_1780-2008.nc",
-                  "HISTALP_precipitation_all_abs_1801-2010.nc",
-                  "HISTALP_precipitation_solid_abs_1801-2008.nc")
+  base_names <-  c("HISTALP_temperature_1780-2014.nc",
+                   "HISTALP_precipitation_all_abs_1801-2014.nc",
+                   "HISTALP_precipitation_solid_abs_1801-2014.nc")
   local_locations <- sapply(base_names, function(x) file.path(base_dir, x))
   zip_base_names <- paste0(base_names, ".bz2")
   zip_locations <- paste0(local_locations, ".bz2")
