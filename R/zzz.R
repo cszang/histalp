@@ -1,5 +1,3 @@
-
-
 #' Check for HISTALP data on system
 #'
 #' Check, if HISTALP data is already present on the system, if not download and
