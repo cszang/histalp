@@ -13,14 +13,10 @@
 #' @examples
 #' get_histalp(10.2, 44.8)
 get_histalp <- function(lon, lat, na.rm = TRUE, base_dir = "~") {
-  clim_params <- c("temperature",
-                   "all precipiation",
-                   "solid precipitation")
+  clim_params <- CLIMPARAMS()
   nc_param_names <- c("T_2M", "TOT_PREC", "PREC_solid")
   start_dates <- as.Date(c("1780/01/01", "1801/01/01", "1801/01/01"))
-  base_names <- c("HISTALP_temperature_1780-2008.nc",
-                  "HISTALP_precipitation_all_abs_1801-2010.nc",
-                  "HISTALP_precipitation_solid_abs_1801-2008.nc")
+  base_names <- BASENAMES()
   local_locations <- sapply(base_names, function(x) file.path(base_dir, x))
   ncs <- lapply(local_locations, nc_open)
   names(ncs) <- clim_params
@@ -61,5 +57,6 @@ get_histalp <- function(lon, lat, na.rm = TRUE, base_dir = "~") {
     date[[pname]] <- x
     date
   }, ncs, nc_param_names, dates, SIMPLIFY = FALSE)
-  Reduce(function(x, y) merge(x, y, all = !na.rm), slices)
+  out <- Reduce(function(x, y) merge(x, y, all = !na.rm), slices)
+  out[order(out$year, out$month), ]
 }

@@ -25,4 +25,3 @@ Extract climate data from nearest HISTALP gridcell
 \examples{
 get_histalp(10.2, 44.8)
 }
-

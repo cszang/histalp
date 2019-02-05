@@ -1,4 +1,16 @@
+BASENAMES <- function() {
+  base_names <- c("HISTALP_temperature_1780-2014.nc",
+                  "HISTALP_precipitation_all_abs_1801-2014.nc",
+                  "HISTALP_precipitation_solid_abs_1801-2014.nc")
+  base_names
+}
 
+CLIMPARAMS <- function() {
+  clim_params <- c("temperature",
+                   "all precipiation",
+                   "solid precipitation")
+  clim_params
+}
 
 #' Check for HISTALP data on system
 #'
@@ -15,12 +27,8 @@
 #' }
 check_and_download <- function(base_dir = "~") {
   # if (!interactive() || stats::runif(1) > 0.1) return()
-  clim_params <- c("temperature",
-                   "all precipiation",
-                   "solid precipitation")
-  base_names <- c("HISTALP_temperature_1780-2008.nc",
-                  "HISTALP_precipitation_all_abs_1801-2010.nc",
-                  "HISTALP_precipitation_solid_abs_1801-2008.nc")
+  clim_params <- CLIMPARAMS()
+  base_names <- BASENAMES()
   local_locations <- sapply(base_names, function(x) file.path(base_dir, x))
   zip_base_names <- paste0(base_names, ".bz2")
   zip_locations <- paste0(local_locations, ".bz2")
