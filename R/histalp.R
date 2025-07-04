@@ -19,6 +19,7 @@ get_histalp <- function(lon, lat, na.rm = TRUE, base_dir = "~") {
   base_names <- BASENAMES()
   local_locations <- sapply(base_names, function(x) file.path(base_dir, x))
   ncs <- lapply(local_locations, nc_open)
+  on.exit(lapply(ncs, nc_close))
   names(ncs) <- clim_params
 
   obs_length <- mapply(function(nc, pname){
